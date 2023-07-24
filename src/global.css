@@ -17,3 +17,65 @@ body{
   margin: 0;
   padding: 0
 }
+
+input, button, p {
+  font-family: 'Inter', sans-serif;
+}
+
+.container-fluid {
+  background: var(--gray-600);
+  height: 100vh;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.newTask {
+  display: flex;
+  width: 100%;
+}
+
+.newTask input{ 
+  border-radius: 8px;
+  border: 1px solid var(--gray-700);
+  background: var(--gray-500);
+  padding: 16px;
+  flex: 1;
+  color: var(--gray-300);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; 
+}
+
+.newTask button{
+  width: 5.625rem;
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--blue-500);
+  height: 3.25rem;
+  color: var(--gray-100);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+ }
+
+ .newTask .plusClircle{
+  margin-left: 8px;
+ }
+
+ .statusTask{
+  display: flex;
+  justify-content: space-between;
+ }
