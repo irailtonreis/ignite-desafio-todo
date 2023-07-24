@@ -12,3 +12,8 @@
   --gray-700: #0D0D0D;
   --red-500: #E25858;
 }
+
+body{
+  margin: 0;
+  padding: 0
+}

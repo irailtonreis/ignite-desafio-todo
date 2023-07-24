@@ -1,10 +1,10 @@
 import './global.css'
-
+import { Header } from './components/Header'
 function App() {
 
   return (
     <>
-      <h1>Iniciando projeto</h1>
+      <Header />
     </>
   )
 }
