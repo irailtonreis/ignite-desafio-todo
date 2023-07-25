@@ -1,6 +1,6 @@
 import "./global.css";
 import { Header } from "./components/Header";
-import { PlusCircle } from "@phosphor-icons/react";
+import { CheckCircle, Circle, PlusCircle, Trash } from "@phosphor-icons/react";
 
 function App() {
   return (
@@ -24,10 +24,46 @@ function App() {
           </div>
           <div className="listTask">
             <ul>
-            <li>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</li>
-            <li>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</li>
-            <li>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</li>
-            <li>Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</li>
+              <li className="task">
+                <Circle className="circle" size={24} />{" "}
+                <p className="nameTask">
+                  Integer urna interdum massa libero auctor neque turpis turpis
+                  semper. Duis vel sed fames integer.
+                </p>{" "}
+                <Trash className="trash" size={24} />
+              </li>
+              <li className="task">
+                <Circle className="circle" size={24} />{" "}
+                <p className="nameTask">
+                  Integer urna interdum massa libero auctor neque turpis turpis
+                  semper. Duis vel sed fames integer.
+                </p>{" "}
+                <Trash className="trash" size={24} />
+              </li>
+              <li className="task">
+                <Circle className="circle" size={24} />{" "}
+                <p className="nameTask">
+                  Integer urna interdum massa libero auctor neque turpis turpis
+                  semper. Duis vel sed fames integer.
+                </p>{" "}
+                <Trash className="trash" size={24} />
+              </li>
+              <li className="task">
+                <CheckCircle className="circleCheck" size={24} />{" "}
+                <p className="nameTask">
+                  Integer urna interdum massa libero auctor neque turpis turpis
+                  semper. Duis vel sed fames integer.
+                </p>{" "}
+                <Trash className="trash" size={24} />
+              </li>
+              <li className="task">
+                <CheckCircle className="circleCheck" size={24} />{" "}
+                <p className="nameTask">
+                  Integer urna interdum massa libero auctor neque turpis turpis
+                  semper. Duis vel sed fames integer.
+                </p>{" "}
+                <Trash className="trash" size={24} />
+              </li>
             </ul>
           </div>
         </div>
