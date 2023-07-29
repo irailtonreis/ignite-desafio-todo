@@ -78,6 +78,48 @@ input, button, p {
  .statusTask{
   display: flex;
   justify-content: space-between;
+  width: 100%;
+ }
+
+ .createdTask{
+  width: 50%;
+  color: var(--blue-400);
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: flex-start;
+ }
+
+ .finishTask{
+  width: 50%;
+  color: var( --purple-400);
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: flex-end;
+ }
+
+ .createdTask span{
+  width: 24px;
+  height: 19px;
+ }
+
+ .finishTask span{
+  width: 52px;
+  height: 19px;
+ }
+
+ .createdTask span,
+ .finishTask span{
+  color: var(--gray-200);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: var(--gray-400);
+  margin-left: 8px;
  }
 
  .task{
