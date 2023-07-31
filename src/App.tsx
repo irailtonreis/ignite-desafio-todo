@@ -13,7 +13,6 @@ interface Task {
 function App() {
   const [tasks, setTasks] = useState<Task[]>();
   const [newTask, setNewTask] = useState("");
-  console.log("Task", uuidv4())
   const addTask = () => {
     const currentTask = {
       id: uuidv4(),
