@@ -17,7 +17,7 @@ function App() {
     const currentTask = {
       id: uuidv4(),
       title: newTask,
-      completed: true,
+      completed: false,
     };
 
     if (tasks?.length) {
@@ -26,6 +26,17 @@ function App() {
     } else {
       setTasks([currentTask]);
     }
+  };
+
+  const deleteTask = (id: string) => {
+    setTasks(tasks?.filter((task) => task.id !== id));
+  };
+
+  const completedTask = (id: string) => {
+    const tasksCompleted = tasks?.map((task) =>
+      task.id === id ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(tasksCompleted);
   };
 
   return (
@@ -57,13 +68,21 @@ function App() {
               {tasks?.map((task) => (
                 <li key={task.id} className="task">
                   {task.completed ? (
-                    <CheckCircle className="circleCheck" size={24} />
+                    <CheckCircle
+                      className="circleCheck"
+                      size={24}
+                      onClick={() => completedTask(task.id)}
+                    />
                   ) : (
-                    <Circle className="circle" size={24} />
+                    <Circle
+                      className="circle"
+                      size={24}
+                      onClick={() => completedTask(task.id)}
+                    />
                   )}
                   <span></span>
                   <p className="nameTask">{task.title}</p>
-                  <Trash className="trash" size={24} />
+                  <Trash className="trash" size={24} onClick={()=>deleteTask(task.id)}/>
                 </li>
               ))}
             </ul>
