@@ -12,6 +12,7 @@ interface Task {
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>();
+  const [tasksFinished, setTasksFinished] = useState<Number>();
   const [newTask, setNewTask] = useState("");
   const addTask = () => {
     const currentTask = {
@@ -36,6 +37,10 @@ function App() {
     const tasksCompleted = tasks?.map((task) =>
       task.id === id ? { ...task, completed: !task.completed } : task
     );
+    if(tasksCompleted){
+      const count = tasksCompleted.reduce((acc, item) => item.completed ? acc + 1 : acc, 0);
+      setTasksFinished(count)
+    }
     setTasks(tasksCompleted);
   };
 
@@ -57,10 +62,10 @@ function App() {
           </div>
           <div className="statusTask">
             <p className="createdTask">
-              Tarefas criadas <span>5</span>
+              Tarefas criadas <span>{tasks?.length ? tasks.length : 0}</span>
             </p>
             <p className="finishTask">
-              Concluídas <span>2 de 5</span>
+              Concluídas <span>{tasksFinished ? `${tasksFinished}` : `${0}` } de {tasks?.length}</span>
             </p>
           </div>
           <div className="listTask">
@@ -81,7 +86,7 @@ function App() {
                     />
                   )}
                   <span></span>
-                  <p className="nameTask">{task.title}</p>
+                  <p className={`nameTask ${task.completed ? 'checked': ''}`}>{task.title}</p>
                   <Trash className="trash" size={24} onClick={()=>deleteTask(task.id)}/>
                 </li>
               ))}

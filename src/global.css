@@ -159,6 +159,10 @@ button:hover {
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
 }
 
+.checked{
+  text-decoration: line-through;
+}
+
 .nameTask {
   color: var(--gray-100);
   font-size: 1rem;
