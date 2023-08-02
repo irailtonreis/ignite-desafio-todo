@@ -2,7 +2,13 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./global.css";
 import { Header } from "./components/Header";
-import { CheckCircle, Circle, PlusCircle, Trash } from "@phosphor-icons/react";
+import {
+  CheckCircle,
+  Circle,
+  ClipboardText,
+  PlusCircle,
+  Trash,
+} from "@phosphor-icons/react";
 
 interface Task {
   id: string;
@@ -23,7 +29,6 @@ function App() {
 
     if (tasks?.length) {
       setTasks([...tasks, currentTask]);
-      
     } else {
       setTasks([currentTask]);
     }
@@ -31,10 +36,13 @@ function App() {
   };
 
   const deleteTask = (id: string) => {
-    const tasksWithOutDeleted = tasks?.filter((task) => task.id !== id) 
-    if(tasksWithOutDeleted){
-      const count = tasksWithOutDeleted.reduce((acc, item) => item.completed ? acc + 1 : acc, 0);
-      setTasksFinished(count)
+    const tasksWithOutDeleted = tasks?.filter((task) => task.id !== id);
+    if (tasksWithOutDeleted) {
+      const count = tasksWithOutDeleted.reduce(
+        (acc, item) => (item.completed ? acc + 1 : acc),
+        0
+      );
+      setTasksFinished(count);
     }
     setTasks(tasksWithOutDeleted);
   };
@@ -43,9 +51,12 @@ function App() {
     const tasksCompleted = tasks?.map((task) =>
       task.id === id ? { ...task, completed: !task.completed } : task
     );
-    if(tasksCompleted){
-      const count = tasksCompleted.reduce((acc, item) => item.completed ? acc + 1 : acc, 0);
-      setTasksFinished(count)
+    if (tasksCompleted) {
+      const count = tasksCompleted.reduce(
+        (acc, item) => (item.completed ? acc + 1 : acc),
+        0
+      );
+      setTasksFinished(count);
     }
     setTasks(tasksCompleted);
   };
@@ -71,9 +82,23 @@ function App() {
               Tarefas criadas <span>{tasks?.length ? tasks.length : 0}</span>
             </p>
             <p className="finishTask">
-              Concluídas <span>{tasksFinished ? `${tasksFinished}` : `${0}` } de {tasks?.length}</span>
+              Concluídas{" "}
+              <span>
+                {tasksFinished ? `${tasksFinished}` : `${0}`} de{" "}
+                {tasks?.length ? tasks.length : 0}
+              </span>
             </p>
           </div>
+          {!tasks?.length ? (
+            <div className="listEmpty">
+              <ClipboardText size={56} color="#333333" />
+              <span>Você ainda não tem tarefas cadastradas</span>
+              <p>Crie tarefas e organize seus itens a fazer</p>
+            </div>
+          ) : (
+            ""
+          )}
+
           <div className="listTask">
             <ul>
               {tasks?.map((task) => (
@@ -92,8 +117,14 @@ function App() {
                     />
                   )}
                   <span></span>
-                  <p className={`nameTask ${task.completed ? 'checked': ''}`}>{task.title}</p>
-                  <Trash className="trash" size={24} onClick={()=>deleteTask(task.id)}/>
+                  <p className={`nameTask ${task.completed ? "checked" : ""}`}>
+                    {task.title}
+                  </p>
+                  <Trash
+                    className="trash"
+                    size={24}
+                    onClick={() => deleteTask(task.id)}
+                  />
                 </li>
               ))}
             </ul>
