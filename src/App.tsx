@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./global.css";
 import { Header } from "./components/Header";
@@ -18,8 +18,28 @@ interface Task {
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>();
-  const [tasksFinished, setTasksFinished] = useState<Number>();
+  const [tasksFinished, setTasksFinished] = useState<number>();
   const [newTask, setNewTask] = useState("");
+  useEffect(() => {
+    const tasksOnLocalStorage = localStorage.getItem("tasks");
+    const tasksStatus = localStorage.getItem("status");
+    if (tasksOnLocalStorage) {
+      setTasks(JSON.parse(tasksOnLocalStorage));
+    }
+    if (tasksStatus) {
+      setTasksFinished(JSON.parse(tasksStatus));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (tasks?.length) {
+      saveTasksInLocalStorage(tasks);
+    }
+    if (tasksFinished) {
+      saveStatusInLocalStorage(tasksFinished);
+    }
+  }, [tasks, tasksFinished]);
+
   const addTask = () => {
     const currentTask = {
       id: uuidv4(),
@@ -59,6 +79,14 @@ function App() {
       setTasksFinished(count);
     }
     setTasks(tasksCompleted);
+  };
+
+  const saveTasksInLocalStorage = (tasks: Task[]) => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  };
+
+  const saveStatusInLocalStorage = (status: number) => {
+    localStorage.setItem("status", JSON.stringify(status));
   };
 
   return (
