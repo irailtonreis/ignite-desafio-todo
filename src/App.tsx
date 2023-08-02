@@ -23,14 +23,20 @@ function App() {
 
     if (tasks?.length) {
       setTasks([...tasks, currentTask]);
-      setNewTask("");
+      
     } else {
       setTasks([currentTask]);
     }
+    setNewTask("");
   };
 
   const deleteTask = (id: string) => {
-    setTasks(tasks?.filter((task) => task.id !== id));
+    const tasksWithOutDeleted = tasks?.filter((task) => task.id !== id) 
+    if(tasksWithOutDeleted){
+      const count = tasksWithOutDeleted.reduce((acc, item) => item.completed ? acc + 1 : acc, 0);
+      setTasksFinished(count)
+    }
+    setTasks(tasksWithOutDeleted);
   };
 
   const completedTask = (id: string) => {
