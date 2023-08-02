@@ -104,17 +104,21 @@ function App() {
               {tasks?.map((task) => (
                 <li key={task.id} className="task">
                   {task.completed ? (
-                    <CheckCircle
-                      className="circleCheck"
-                      size={24}
-                      onClick={() => completedTask(task.id)}
-                    />
+                    <div className="check">
+                      <CheckCircle
+                        className="circleCheck"
+                        size={24}
+                        onClick={() => completedTask(task.id)}
+                      />
+                    </div>
                   ) : (
-                    <Circle
-                      className="circle"
-                      size={24}
-                      onClick={() => completedTask(task.id)}
-                    />
+                    <div className="check">
+                      <Circle
+                        className="circle"
+                        size={24}
+                        onClick={() => completedTask(task.id)}
+                      />
+                    </div>
                   )}
                   <span></span>
                   <p className={`nameTask ${task.completed ? "checked" : ""}`}>
