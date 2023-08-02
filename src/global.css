@@ -27,12 +27,14 @@ body {
   flex-direction: column;
   max-width: 46rem;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .newTask {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  margin: -27.5px 0 4.063rem;
+  margin: -1.7188rem 0 4.063rem;
 }
 
 .newTask input {
@@ -57,9 +59,8 @@ body {
 }
 
 .newTask button {
-  width: 5.625rem;
   display: flex;
-  padding: 16px;
+  padding: 1rem;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
@@ -70,9 +71,10 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
-  margin-left: 8px;
   border: none;
   transition: all 0.3s;
+  min-width: 100%;
+  margin-top: 1rem;
 }
 
 button:hover {
@@ -203,4 +205,19 @@ button:hover {
 .listEmpty p{
   color: var(--gray-300);
   font-size: 1rem;
+}
+
+@media(min-width: 768px) {
+  .container{
+    padding: 0;
+  }
+  .newTask {
+    flex-direction: row;
+  }
+  .newTask button{
+      min-width: initial;
+      width: 5.625rem;
+      margin-left: 8px;
+      margin-top: 0;
+  }
 }
